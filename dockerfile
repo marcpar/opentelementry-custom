@@ -18,9 +18,10 @@ RUN cd opentelemetry-collector && \
 # build otelcol with ocb
 RUN ocb --config builder.yaml
 
+# Runtime Image
 FROM alpine:3.17.2
 
 COPY --from=builder /build/dist/otelcol /usr/bin/otelcol
     
 ENTRYPOINT [ "otelcol" ]
-CMD ["--help"]
+CMD ["--config", "/etc/otelcol/config.yaml"]
