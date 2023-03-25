@@ -2,6 +2,9 @@ FROM golang:1.20.2 as builder
 
 ARG BUILDER_VERSION=v0.74.0
 
+ENV GOARCH=amd64
+ENV GOOS=linux
+
 WORKDIR /build
 
 COPY . /build
